@@ -32,7 +32,7 @@
     "config": {
         "process-timeout": 1800,
         "github-oauth": {
-            "github.com": "9e29debad42daa4bb19de15ae922c8d22176ee5b"
+            "github.com": "8c678472b2eb34ac1878bf1729cf239f8ffc22a2"
         }
     },
     "extra": {

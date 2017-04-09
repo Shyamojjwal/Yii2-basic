@@ -37,3 +37,4 @@ phpunit.phar
 !/assets/AppAsset.php
 !/assets/db
 !/assets/ForntendAssets
+!/assets/BackendAssets
