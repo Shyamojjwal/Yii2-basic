@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\maintainance\models;
 
 use Yii;
 
@@ -26,26 +26,23 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  */
-class UserMaster extends \yii\db\ActiveRecord {
-
-    public $cnf_password;
-
+class UserMaster extends \yii\db\ActiveRecord
+{
     /**
      * @inheritdoc
      */
-    public static function tableName() {
+    public static function tableName()
+    {
         return 'user_master';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules() {
+    public function rules()
+    {
         return [
-            [['username', 'first_name', 'last_name', 'email', 'mobile', 'dob', 'password', 'auth_key', 'password', 'email'], 'required', 'on' => 'new-user-signup'],
-            ['email', 'email', 'on' => 'new-user-signup'],
-            ['cnf_password', 'compare', 'compareAttribute'=>'password', 'on' => 'new-user-signup'],
-            
+            [['username', 'auth_key', 'password', 'email'], 'required'],
             [['role', 'email_verified', 'mobile', 'mob_verified', 'status'], 'integer'],
             [['dob', 'created_at', 'updated_at'], 'safe'],
             [['username', 'password', 'password_reset_token', 'email'], 'string', 'max' => 255],
@@ -60,28 +57,27 @@ class UserMaster extends \yii\db\ActiveRecord {
     /**
      * @inheritdoc
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
-            'id' => 'ID',
-            'username' => 'Username',
-            'role' => 'Role',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'full_name' => 'Full Name',
-            'auth_key' => 'Auth Key',
-            'password' => 'Password',
-            'cnf_password' => 'Retype Password',
-            'password_reset_token' => 'Password Reset Token',
-            'email' => 'Email',
-            'email_verified' => 'Email Verified',
-            'mobile' => 'Mobile',
-            'mob_verified' => 'Mob Verified',
-            'dob' => 'Dob',
-            'proImg' => 'Pro Img',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id' => Yii::t('app', 'ID'),
+            'username' => Yii::t('app', 'Username'),
+            'role' => Yii::t('app', 'Role'),
+            'first_name' => Yii::t('app', 'First Name'),
+            'last_name' => Yii::t('app', 'Last Name'),
+            'full_name' => Yii::t('app', 'Full Name'),
+            'auth_key' => Yii::t('app', 'Auth Key'),
+            'password' => Yii::t('app', 'Password'),
+            'password_reset_token' => Yii::t('app', 'Password Reset Token'),
+            'email' => Yii::t('app', 'Email'),
+            'email_verified' => Yii::t('app', 'Email Verified'),
+            'mobile' => Yii::t('app', 'Mobile'),
+            'mob_verified' => Yii::t('app', 'Mob Verified'),
+            'dob' => Yii::t('app', 'Dob'),
+            'proImg' => Yii::t('app', 'Pro Img'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
-
 }

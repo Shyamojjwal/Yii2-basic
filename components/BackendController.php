@@ -11,22 +11,17 @@ class BackendController extends Controller {
 
     public function beforeAction($action) {
 //        ====== set backend layout setting ===============
-        if (Yii::$app->controller->id == 'auth') {
-            $this->layout = "@app/modules/maintainance/views/layouts/login-layout";
-        } else {
-            $this->layout = "@app/modules/maintainance/views/layouts/main-layout";
-        }
+        require_once 'themes-management.php';
 //        ====== end set backend layout setting ===============
         return parent::beforeAction($action);
     }
 
-//if ($this->getControllerName() == 'auth') {
-//            $this->layout = "@app/modules/maintainance/views/layouts/login-layout";
-//        } else {
-//            $this->layout = "@app/modules/maintainance/views/layouts/main-layout";
-//        }
     public function getProjectName() {
         return ucwords('Yii2-Basic');
+    }
+
+    public function adminUrl($url = '') {
+        return Yii::$app->urlManager->createAbsoluteUrl('/maintainance/') . $url;
     }
 
     public function getSiteLogoImg($imgPath) {
@@ -40,7 +35,7 @@ class BackendController extends Controller {
     }
 
     public function getStaticImages($imgPath) {
-        $image = Yii::$app->request->baseUrl . '/themes/images/static-img/' . $imgPath;
+        $image = Yii::$app->request->baseUrl . '/themes/backend/assets/images/' . $imgPath;
         return $image;
     }
 
